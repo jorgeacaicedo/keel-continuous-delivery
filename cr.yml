@@ -1,0 +1,16 @@
+# cr.yaml
+apiVersion: forward.webhookrelay.com/v1
+kind: WebhookRelayForward
+metadata:
+  name: example-forward
+spec:
+  buckets:
+  - name: k8s-operator
+    inputs:
+    - name: public-endpoint
+      description: "Public endpoint, supply this to the webhook producer"
+      responseBody: "OK"
+      responseStatusCode: 200
+    outputs:
+    - name: webhook-receiver
+      destination: http://destination:5050/webhooks
